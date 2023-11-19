@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngTamerHassanTask.Infrastructure", "EngTamerHassanTask.Infrastructure\EngTamerHassanTask.Infrastructure.csproj", "{ED22C261-E238-4026-9756-BCE2B6A58FE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngTamerHassanTask.Application", "EngTamerHassanTask.Application\EngTamerHassanTask.Application.csproj", "{7885EB90-BBCD-49AF-A1B3-D4CA6A933E21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngTamerHassanTask.Domain", "EngTamerHassanTask\Shared\EngTamerHassanTask.Domain.csproj", "{1B6CB483-6924-45BE-90AE-2D778040FBC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngTamerHassanTask.Api", "EngTamerHassanTask\Server\EngTamerHassanTask.Api.csproj", "{EC799801-D2E4-4D72-8795-5359C7139236}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngTamerHassanTask.WebUi", "EngTamerHassanTask\Client\EngTamerHassanTask.WebUi.csproj", "{79ADD36E-5A74-4337-9ED6-2D5B4F78AE9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED22C261-E238-4026-9756-BCE2B6A58FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED22C261-E238-4026-9756-BCE2B6A58FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED22C261-E238-4026-9756-BCE2B6A58FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED22C261-E238-4026-9756-BCE2B6A58FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7885EB90-BBCD-49AF-A1B3-D4CA6A933E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7885EB90-BBCD-49AF-A1B3-D4CA6A933E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7885EB90-BBCD-49AF-A1B3-D4CA6A933E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7885EB90-BBCD-49AF-A1B3-D4CA6A933E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6CB483-6924-45BE-90AE-2D778040FBC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6CB483-6924-45BE-90AE-2D778040FBC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6CB483-6924-45BE-90AE-2D778040FBC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6CB483-6924-45BE-90AE-2D778040FBC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC799801-D2E4-4D72-8795-5359C7139236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC799801-D2E4-4D72-8795-5359C7139236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC799801-D2E4-4D72-8795-5359C7139236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC799801-D2E4-4D72-8795-5359C7139236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79ADD36E-5A74-4337-9ED6-2D5B4F78AE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79ADD36E-5A74-4337-9ED6-2D5B4F78AE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79ADD36E-5A74-4337-9ED6-2D5B4F78AE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79ADD36E-5A74-4337-9ED6-2D5B4F78AE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A89E137-6425-4BB5-8D99-15FC2070E14C}
+	EndGlobalSection
+EndGlobal

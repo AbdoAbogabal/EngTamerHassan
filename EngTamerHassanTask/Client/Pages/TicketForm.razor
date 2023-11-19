@@ -1,0 +1,91 @@
+﻿@namespace EngTamerHassanTask.Client
+
+@if (ShowForm)
+{
+    <MudCard Elevation="3">
+        <MudCardHeader>
+            @if (FormSystemFeatureType.Equals(SystemFeatureType.Delete))
+            {
+                <div class="alert alert-danger" role="alert">
+                    Do You Want To Delete This Ticket ?
+                </div>
+            }
+            else if (FormSystemFeatureType.Equals(SystemFeatureType.Details))
+            {
+                <div class="alert alert-secondary" role="alert">
+                    Ticket Details
+                </div>
+            }
+            else if (FormSystemFeatureType.Equals(SystemFeatureType.Add))
+            {
+                <div class="alert alert-success" role="alert">
+                    Adding a Ticket
+                </div>
+            }
+        </MudCardHeader>
+        <MudCardContent>
+            <EditForm Model="Source" OnValidSubmit="@HandleValidSubmit">
+                <FluentValidationValidator />
+
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-2">
+                        <label>Phone number</label>
+                        <span class="text-danger">*</span>
+                        <InputText class="form-control" @bind-Value="@Source.PhoneNumber" disabled="@(FormSystemFeatureType.Equals(SystemFeatureType.Delete) || FormSystemFeatureType.Equals(SystemFeatureType.Details))" />
+                        <ValidationMessage For="@(()=>Source.PhoneNumber)" />
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label>Governorate</label>
+                        <span class="text-danger">*</span>
+                        <InputSelect id="Source.Governorate" class="form-control" @bind-Value="Source.Governorate" disabled="@(FormSystemFeatureType.Equals(SystemFeatureType.Delete) || FormSystemFeatureType.Equals(SystemFeatureType.Details))">
+                            @foreach (var governorate in governorates)
+                            {
+                                <option value="@governorate">@governorate</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(()=>Source.Governorate)" />
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-6 mb-2">
+                        <label>City</label>
+                        <span class="text-danger">*</span>
+                        <InputSelect id="Source.City" @bind-Value="Source.City" class="form-control" disabled="@(FormSystemFeatureType.Equals(SystemFeatureType.Delete) || FormSystemFeatureType.Equals(SystemFeatureType.Details))">
+                            @foreach (var city in cities)
+                            {
+                                <option value="@city">@city</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(()=>Source.City)" />
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label>District</label>
+                        <span class="text-danger">*</span>
+
+                        <InputSelect id="Source.District" @bind-Value="Source.District" class="form-control" disabled="@(FormSystemFeatureType.Equals(SystemFeatureType.Delete) || FormSystemFeatureType.Equals(SystemFeatureType.Details))">
+                            @foreach (var district in districts)
+                            {
+                                <option value="@district">@district</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(()=>Source.District)" />
+                    </div>
+                </div>
+
+                <MudDivider DividerType="DividerType.FullWidth" Light="false" Class="mt-3" />
+                <MudCardActions Class="mt-2">
+                    @if (ShowSaveButton && (FormSystemFeatureType.Equals(SystemFeatureType.Add) || FormSystemFeatureType.Equals(SystemFeatureType.Edit)))
+                    {
+                        <button type="submit" class="btn btn-success mr-2">Save</button>
+                    }
+                    @if (FormSystemFeatureType.Equals(SystemFeatureType.Delete))
+                    {
+                        <button type="button" class="btn btn-danger mr-2" onclick="@(async ()=>await Delete(Source))">Delete</button>
+                    }
+                    <button type="button" onclick="@(async()=>await Cancel())" class="btn btn-secondary mr-2">Cancel</button>
+                </MudCardActions>
+            </EditForm>
+        </MudCardContent>
+    </MudCard>
+}

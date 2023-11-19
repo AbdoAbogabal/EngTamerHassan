@@ -1,0 +1,76 @@
+﻿@namespace EngTamerHassanTask.Client
+
+<style>
+    body {
+        background-color: gray;
+    }
+</style>
+@page "/"
+<div class="container-fluid">
+    <TicketForm Source="@source"
+                ShowForm="@showForm"
+                CloseForm="@CloseForm"
+                ShowSaveButton="@showSaveButton"
+                GetTicketsCount="@GetTicketsCount"
+                FormSystemFeatureType="@systemFeatureType" />
+
+    @if (!showForm)
+    {
+        <div class="col mt-4 mb-4">
+            <button type="button" class="btn btn-success" onclick="@(()=>ShowForm(SystemFeatureType.Add,new()))">New</button>
+        </div>
+
+        <MudRTLProvider RightToLeft="false">
+            <MudDataGrid Bordered="true"
+                         Loading="@isLoading"
+                         LoadingProgressColor="Color.Error"
+                         T="Ticket" Items="@tickets" Filterable="false">
+                <Columns>
+                    <PropertyColumn Property="t => t.Governorate" Title="Governorate" />
+                    <PropertyColumn Property="t => t.City" Title="City" />
+                    <PropertyColumn Property="t => t.District" Title="District" />
+                    <PropertyColumn Property="t => t.PhoneNumber" Title="Phone number" />
+                    <PropertyColumn Property="t => t.IsHandled" CellStyleFunc="@_cellStyleFunc" Title="Is Handled" Sortable="false" />
+
+                    <TemplateColumn CellClass="d-flex justify-end" Filterable="false" Sortable="false">
+                        <CellTemplate>
+                            <MudStack Row>
+                            <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@(async()=> await ShowForm(SystemFeatureType.Edit,context.Item))" />
+                            <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="@(async()=> await ShowForm(SystemFeatureType.Delete,context.Item))" />
+                            <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Info" OnClick="@(async()=> await ShowForm(SystemFeatureType.Details,context.Item))" />
+                            @if (!context.Item.IsHandled && !context.Item.IsHandled)
+                                {
+                                    <MudButton Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Primary" OnClick="@(async()=> await Handle(context.Item))">Handle</MudButton>
+                                }
+                            </MudStack>
+                        </CellTemplate>
+                    </TemplateColumn>
+                </Columns>
+            </MudDataGrid>
+        </MudRTLProvider>
+
+        @if (isLoading)
+        {
+            <div class="text-center w-100 d-flex justify-content-center align-items-center">
+                <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+            </div>
+        }
+        else if (!tickets.Any())
+        {
+            <div class="text-center w-100 d-flex justify-content-center align-items-center">
+                <h1 style="color: #1fd58d;font-family: 'Lucida Sans';margin-top:15%">
+                    There is no inserted Ticket yet
+                </h1>
+            </div>
+        }
+
+        <nav aria-label="..." class="mb-4 mt-4">
+            <ul class="pagination pagination-lg">
+                @foreach (int pageNumber in Enumerable.Range(0, (int)pageCount))
+                {
+                    <li class="page-item"><a class="page-link bg-black text-white" onclick="@(async()=>await GetTickets(pageNumber+1,size))">@(pageNumber + 1)</a></li>
+                }
+            </ul>
+        </nav>
+    }
+</div>
